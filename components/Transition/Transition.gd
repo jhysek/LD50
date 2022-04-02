@@ -9,6 +9,10 @@ func openScene():
 	scena = ""
 	$AnimationPlayer.play_backwards("Fade")
 	
+func openSceneLong():
+	scena = ""
+	$AnimationPlayer.play_backwards("LongFade")
+	
 func switchTo(cilova_scena):
 	scena = cilova_scena
 	$AnimationPlayer.play("Fade")

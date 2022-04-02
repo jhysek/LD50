@@ -1,14 +1,22 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/AreYouSerious-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/rrh2.png" type="Texture" id=3]
+[ext_resource path="res://assets/title.png" type="Texture" id=4]
+[ext_resource path="res://components/Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/tree01.png" type="Texture" id=6]
+[ext_resource path="res://assets/tree02.png" type="Texture" id=7]
 
-[sub_resource type="DynamicFont" id=1]
-size = 88
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
+[sub_resource type="Environment" id=8]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.18
+glow_strength = 1.22
+glow_bloom = 0.19
+glow_hdr_luminance_cap = 54.67
+glow_bicubic_upscale = true
+glow_high_quality = true
 
 [sub_resource type="Theme" id=3]
 
@@ -20,33 +28,52 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.501961, 0, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.34902, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 0.643137 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 8 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.258824 )
+position = Vector2( -227, 21 )
+rotation = 3.14159
+scale = Vector2( 0.2, -0.2 )
+texture = ExtResource( 7 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 375, 4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 301, -38 )
+scale = Vector2( 0.347599, 0.259088 )
+texture = ExtResource( 6 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = -237.0
-margin_top = -109.0
-margin_right = 516.0
-margin_bottom = 11.0
-custom_fonts/font = SubResource( 1 )
-text = "Red Riding Hood"
-align = 1
-
 [node name="Button" type="Button" parent="."]
-margin_left = -32.0
-margin_top = 106.0
-margin_right = 265.0
-margin_bottom = 186.0
+margin_left = -176.0
+margin_top = 144.0
+margin_right = 121.0
+margin_bottom = 224.0
 theme = SubResource( 3 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/hover = SubResource( 4 )
@@ -55,8 +82,32 @@ custom_styles/normal = SubResource( 5 )
 text = "Start game"
 
 [node name="Rrh2" type="Sprite" parent="."]
+visible = false
 position = Vector2( -320, 57 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
+
+[node name="Title" type="Sprite" parent="."]
+position = Vector2( 74, -193 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( -318, 144 )
+scale = Vector2( 0.7, 0.7 )
+frozen = true
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -399, -19 )
+scale = Vector2( 0.335152, 0.34639 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.431373 )
+margin_left = 72.0
+margin_top = 273.0
+margin_right = 497.0
+margin_bottom = 287.0
+text = "Made in 48h from scratch by Jiri Hysek for  Ludum Dare 50 Compo."
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
