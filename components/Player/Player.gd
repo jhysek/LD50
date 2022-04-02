@@ -24,7 +24,8 @@ enum State {
 	READY,
 	HIDDEN,
 	ATTACKING,
-	ENDING_ATTACK
+	ENDING_ATTACK,
+	DEAD
 }
 
 var double_jumped = false
@@ -49,8 +50,9 @@ func _ready():
 func _physics_process(delta):
 	if frozen or (game and game.paused):
 		return
-
-	motion.y += GRAVITY * delta
+	
+	if state != State.HIDDEN:
+		motion.y += GRAVITY * delta
 
 	if not dead:
 		controlled_process(delta)
@@ -171,3 +173,14 @@ func _on_EyeBlinker_timeout():
 		$Visual/Body/Head/ClosedEyes.hide()
 		$EyeBlinker.wait_time = rand_range(2, 7)
 		$EyeBlinker.start()
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("Killable"):
+		area.stab()
+
+
+func _on_Area2D_body_entered(body):	
+	if body.is_in_group("Killable"):
+		body.stab()
+	

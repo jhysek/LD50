@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://components/Player/cape_left.png" type="Texture" id=1]
 [ext_resource path="res://components/Player/Player.gd" type="Script" id=2]
@@ -18,7 +18,10 @@
 extents = Vector2( 43, 250.5 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 83.5, 197.5 )
+extents = Vector2( 83.5, 259 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 48.2752, 12.0412 )
 
 [sub_resource type="Animation" id=11]
 resource_name = "DoubleJump"
@@ -517,6 +520,30 @@ tracks/14/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:collision_layer")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath(".:collision_mask")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -1273,6 +1300,54 @@ tracks/31/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/32/type = "value"
+tracks/32/path = NodePath("Visual/Body/Arm/Knife/Area2D:monitorable")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Visual/Body/Arm/Knife/Area2D:monitoring")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath(".:collision_layer")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath(".:collision_mask")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Stab"
@@ -1565,6 +1640,30 @@ tracks/23/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/24/type = "value"
+tracks/24/path = NodePath("Visual/Body/Arm/Knife/Area2D:monitorable")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Visual/Body/Arm/Knife/Area2D:monitoring")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "UnHide"
@@ -1736,6 +1835,30 @@ tracks/13/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath(".:collision_layer")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:collision_mask")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -2204,7 +2327,7 @@ tracks/18/keys = {
 "values": [ false ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 175.0 ],
@@ -2215,10 +2338,12 @@ __meta__ = {
 position = Vector2( 11, -81.5 )
 shape = SubResource( 1 )
 
-[node name="Area" type="Area2D" parent="."]
+[node name="Area" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
-position = Vector2( -14.5, -91.5 )
+position = Vector2( -14.5, -100 )
 shape = SubResource( 7 )
 
 [node name="Visual" type="Node2D" parent="."]
@@ -2290,6 +2415,16 @@ rotation = -2.64454
 texture = ExtResource( 12 )
 offset = Vector2( 44, -19 )
 
+[node name="Area2D" type="Area2D" parent="Visual/Body/Arm/Knife"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Body/Arm/Knife/Area2D"]
+position = Vector2( 69.3773, -31.4599 )
+rotation = -0.467621
+scale = Vector2( 1, 1 )
+shape = SubResource( 12 )
+
 [node name="Hand" type="Sprite" parent="Visual/Body/Arm"]
 visible = false
 position = Vector2( 120.405, 8.99685 )
@@ -2332,5 +2467,7 @@ wait_time = 4.0
 one_shot = true
 autostart = true
 
+[connection signal="area_entered" from="Visual/Body/Arm/Knife/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Visual/Body/Arm/Knife/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="EyeBlinker" to="." method="_on_EyeBlinker_timeout"]
