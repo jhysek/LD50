@@ -19,9 +19,12 @@ var state = State.IDLE
 onready var game = get_node("/root/Game")
 onready var ray = $RayCast2D
 onready var rayClose = $RayCastClose
+onready var anim = $AnimationPlayer
+onready var player = game.get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	anim.play("WalkLeft")
 	set_physics_process(true)
 
 func fov():
@@ -35,14 +38,19 @@ func fov():
 			if state != State.SEE_NEAR:
 				state = State.SEE_NEAR
 				$FOV.modulate = Color("27e20303")
+				var closeObject = rayClose.get_collider()
+				if closeObject.is_in_group("Player") and !player.is_dead():
+					attack()
 	else:
 		if state == State.SEE:
 			$FOV.modulate = Color("27f6f6f6")
 			state = State.IDLE
 			
-
-			
-			
+func attack():
+	state = State.ATTACKING
+	anim.play("Attack")
+	motion.y = -2000
+	motion.x = -2000
 		
 func behavior(delta):
 	pass

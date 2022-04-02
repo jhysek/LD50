@@ -7,7 +7,7 @@ extends KinematicBody2D
 # [X] animation
 
 # ATTACK
-# [ ] functionality
+# [X] functionality
 # [X] anumation
 
 # HIDE
@@ -17,7 +17,6 @@ extends KinematicBody2D
 export var GRAVITY = 70 * 70
 export var SPEED   = 60000 #40000
 export var JUMP_SPEED  = -1800
-export var dead = false
 export var frozen = false
 
 enum State {
@@ -46,6 +45,8 @@ onready var anim = $AnimationPlayer
 func _ready():
 	set_physics_process(true)
 	
+func is_dead():
+	return state == State.DEAD
 	
 func _physics_process(delta):
 	if frozen or (game and game.paused):
@@ -54,7 +55,7 @@ func _physics_process(delta):
 	if state != State.HIDDEN:
 		motion.y += GRAVITY * delta
 
-	if not dead:
+	if state != State.DEAD:
 		controlled_process(delta)
 	else:
 		motion.x = lerp(motion.x, 0, 4 * delta)
@@ -82,7 +83,7 @@ func controlled_process(delta):
 	
 	was_in_air = in_air
 
-	if !dead:
+	if state != State.DEAD:
 		if state == State.READY and !in_air and Input.is_action_pressed("hide"):
 			for area in $Area.get_overlapping_areas():
 				if area.is_in_group("Hidable"):

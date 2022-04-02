@@ -2422,7 +2422,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Body/Arm/Knife/Area2D"]
 position = Vector2( 69.3773, -31.4599 )
 rotation = -0.467621
-scale = Vector2( 1, 1 )
 shape = SubResource( 12 )
 
 [node name="Hand" type="Sprite" parent="Visual/Body/Arm"]
