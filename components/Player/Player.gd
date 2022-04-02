@@ -4,15 +4,15 @@ extends KinematicBody2D
 
 # DOUBLE JUMP
 # [X] functionality
-# [ ] animation
+# [X] animation
 
 # ATTACK
 # [ ] functionality
-# [ ] anumation
+# [X] anumation
 
 # HIDE
-# [ ] functionality
-# [ ] animation
+# [X] functionality
+# [X] animation
 
 export var GRAVITY = 70 * 70
 export var SPEED   = 60000 #40000
@@ -20,11 +20,20 @@ export var JUMP_SPEED  = -1800
 export var dead = false
 export var frozen = false
 
+enum State {
+	READY,
+	HIDDEN,
+	ATTACKING,
+	ENDING_ATTACK
+}
+
 var double_jumped = false
 var in_air = false
 var was_in_air = false
 var jump_timeout = 0
 var hidden = false 
+var blink = false
+var state = State.READY
 
 var motion = Vector2(0,0)
 
@@ -72,30 +81,40 @@ func controlled_process(delta):
 	was_in_air = in_air
 
 	if !dead:
-		if !hidden and !in_air and Input.is_action_just_pressed("hide"):
+		if state == State.READY and !in_air and Input.is_action_pressed("hide"):
 			for area in $Area.get_overlapping_areas():
 				if area.is_in_group("Hidable"):
-					hidden = true
+					state = State.HIDDEN
 					motion.x = 0
 					motion.y = 0
-					print("HIDING")
 					anim.play("Hide")
 					
-		if hidden and Input.is_action_just_released("hide"):
+		if state == State.HIDDEN and Input.is_action_just_released("hide"):
 			anim.stop()
 			anim.play("UnHide")
-			print("UN-HIDING")
 		
-		if hidden:
+		
+		if state == State.HIDDEN:
 			return
+			
+		if Input.is_action_just_pressed('attack'):
+			state = State.ATTACKING
+			anim.play("Stab")
 		
+		if state != State.READY:
+			if !in_air:
+				motion.x = 0
+			return
+			
 		if (!in_air or !double_jumped) and Input.is_action_just_pressed("ui_up"):
 			if in_air: 
 				double_jumped = true
+				anim.play("DoubleJump")
 			else:
 				in_air = true
+				anim.play("Jump")
 			jump_timeout = 0
-			anim.play("Jump")
+			
 			$Sfx/Jump.play()
 			motion.y = JUMP_SPEED
 			sfx_run.stop()
@@ -129,4 +148,26 @@ func controlled_process(delta):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "UnHide":
-		hidden = false
+		state = State.READY
+		
+	if state == State.ENDING_ATTACK:
+		state = State.READY
+
+	if state == State.ATTACKING:
+		state = State.ENDING_ATTACK
+		anim.play_backwards("Stab")
+		
+
+
+func _on_EyeBlinker_timeout():
+	if !blink:
+		if !hidden:
+			$Visual/Body/Head/ClosedEyes.show()
+		$EyeBlinker.wait_time = 0.1
+		blink = true
+		$EyeBlinker.start()
+	else:
+		blink = false
+		$Visual/Body/Head/ClosedEyes.hide()
+		$EyeBlinker.wait_time = rand_range(2, 7)
+		$EyeBlinker.start()
