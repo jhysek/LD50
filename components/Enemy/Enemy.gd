@@ -24,10 +24,13 @@ onready var player = game.get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	anim.play("WalkLeft")
+	anim.play("Idle")
 	set_physics_process(true)
 
 func fov():
+	if player.is_hidden():
+		return
+		
 	if ray.is_colliding():
 		if state != State.SEE:
 			state = State.SEE

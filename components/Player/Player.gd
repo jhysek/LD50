@@ -48,6 +48,9 @@ func _ready():
 func is_dead():
 	return state == State.DEAD
 	
+func is_hidden():
+	return state == State.HIDDEN
+	
 func _physics_process(delta):
 	if frozen or (game and game.paused):
 		return
