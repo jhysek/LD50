@@ -30,7 +30,7 @@ onready var player = game.get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	anim.play("Idle")
+	anim.play("WalkRight")
 	set_physics_process(true)
 
 func fov():
@@ -61,6 +61,12 @@ func attack():
 	motion.y = -2000
 	motion.x = -2000
 		
+		
+func die():
+	anim.play("Die")
+	$Sfx/Death.play()
+	state = State.DEAD
+	
 func behavior(delta):
 	if movementType == MovementType.STATIC:
 		return
@@ -85,4 +91,5 @@ func _physics_process(delta):
 	
 
 func stab():
-	print("AU AU AU")
+	if state != State.DEAD:
+		die()
