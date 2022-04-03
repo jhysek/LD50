@@ -9,8 +9,14 @@ enum State {
 	DEAD
 }
 
+enum MovementType {
+	STATIC,
+	WALKING
+}
+
 export var GRAVITY = 70 * 70
 export var frozen = false
+export var movementType = MovementType.STATIC
 
 var direction = 1
 var motion = Vector2(0,0)
@@ -56,7 +62,11 @@ func attack():
 	motion.x = -2000
 		
 func behavior(delta):
-	pass
+	if movementType == MovementType.STATIC:
+		return
+		
+	if movementType == MovementType.WALKING:
+		pass
 
 func _physics_process(delta):
 	if frozen or (game and game.paused):
