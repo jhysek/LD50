@@ -16,7 +16,7 @@ extends KinematicBody2D
 
 export var GRAVITY = 70 * 70
 export var SPEED   = 60000 #40000
-export var JUMP_SPEED  = -1800
+export var JUMP_SPEED  = -1600
 export var frozen = false
 
 enum State {
@@ -121,6 +121,7 @@ func controlled_process(delta):
 			else:
 				in_air = true
 				anim.play("Jump")
+				$Sfx/Run.stop()
 				$Sfx/Jump.play()
 			jump_timeout = 0
 			
@@ -199,3 +200,4 @@ func die():
 	$Sfx/Death.play()
 	anim.play("Death")
 	state = State.DEAD
+	game.restart()

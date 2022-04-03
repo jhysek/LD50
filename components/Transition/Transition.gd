@@ -16,6 +16,10 @@ func openSceneLong():
 func switchTo(cilova_scena):
 	scena = cilova_scena
 	$AnimationPlayer.play("Fade")
+	
+func switchLongerTo(target_scene):
+	scena = target_scene
+	$AnimationPlayer.play("LongFade")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if !scena.empty():

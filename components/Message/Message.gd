@@ -4,8 +4,10 @@ var delay = false
 var wait_time = 0
 var texts = []
 var current = null
+export var fontSize = 150
 
 func _ready():
+	#set("custom_fonts/font/size", fontSize)
 	set_process(true)
 	
 func _process(delta):

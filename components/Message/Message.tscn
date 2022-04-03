@@ -4,7 +4,7 @@
 [ext_resource path="res://components/Message/Message.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=20]
-size = 60
+size = 200
 outline_size = 10
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -45,8 +45,8 @@ tracks/0/keys = {
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -1229.0
 margin_top = -811.0
-margin_right = 506.0
-margin_bottom = -265.0
+margin_right = 1259.0
+margin_bottom = -64.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 20 )
 text = "Lorem ipsum dolor sit amet. Dolor amet Tlalala, kocicka se vdavala, sultan si ji bral!"

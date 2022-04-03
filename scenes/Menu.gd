@@ -5,7 +5,7 @@ func _ready():
 
 func _on_Button_pressed():
 	Music.play()
-	Transition.switchTo("res://scenes/Game.tscn")
+	Transition.switchTo("res://levels/Level1.tscn")
 
 
 func _on_ButtonBack_pressed():

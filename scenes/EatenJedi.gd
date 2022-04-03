@@ -1,11 +1,12 @@
 extends Node2D
 
 var texts = [
-	["Grandma told me this will inevitably happen.", 5, 1],
-	["Fortunately she gave me this...", 4, 2],
+	["Grandma told me this will happen.", 5, 1],
+	["Fortunately, she gave me this...", 5, 2],
 ]
 
 func _ready():
+	Transition.openScene()
 	Music.playFromPosition(82)
 	$Timer.start()
 	$Message.tell_lines(texts)

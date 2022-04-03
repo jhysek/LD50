@@ -1562,7 +1562,7 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -184, -335, 2, -350, 223, -163, 62, -3, -256, -3, -319, -211 )
+polygon = PoolVector2Array( -184, -335, 2, -350, 185, -240, 221, -2, -256, -3, -228, -209 )
 one_way_collision = true
 
 [node name="Visual" type="Node2D" parent="."]
@@ -1675,6 +1675,7 @@ position = Vector2( -246, -47.25 )
 shape = SubResource( 9 )
 
 [node name="FOV" type="Sprite" parent="Visual"]
+visible = false
 modulate = Color( 0.85098, 0.85098, 0.85098, 0.313726 )
 position = Vector2( -267, -233 )
 rotation = -0.0387707
@@ -1706,8 +1707,17 @@ stream = ExtResource( 15 )
 [node name="Death" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource( 14 )
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DirtyHack" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Visual/Body/HeadTop/Teeth" to="." method="_on_Teeth_area_entered"]
 [connection signal="area_entered" from="Visual/VisionArea" to="." method="_on_VisionArea_area_entered"]
 [connection signal="area_exited" from="Visual/VisionArea" to="." method="_on_VisionArea_area_exited"]
 [connection signal="area_entered" from="Visual/VisionArea/CloseArea" to="." method="_on_CloseArea_area_entered"]
 [connection signal="area_exited" from="Visual/VisionArea/CloseArea" to="." method="_on_CloseArea_area_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="DirtyHack" to="." method="_on_DirtyHack_timeout"]
