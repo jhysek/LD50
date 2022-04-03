@@ -4,7 +4,9 @@ func _ready():
 	Transition.openScene()
 
 func _on_Button_pressed():
+	$Click.play()
 	Music.play()
+	#get_tree().change_scene("res://levels/Level1.tscn")
 	Transition.switchTo("res://levels/Level1.tscn")
 
 

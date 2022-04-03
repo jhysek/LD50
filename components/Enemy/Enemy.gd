@@ -94,7 +94,6 @@ func _physics_process(delta):
 
 	motion = move_and_slide(motion, Vector2(0, -1), 1, 4)
 	
-	print(turn_cooldown)
 	if movementType == MovementType.WALKING and motion.x == 0 and turn_cooldown <= 0:
 		direction *= -1
 		turn_cooldown = 0.5

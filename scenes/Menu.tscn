@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/tree01.png" type="Texture" id=6]
 [ext_resource path="res://assets/tree02.png" type="Texture" id=7]
 [ext_resource path="res://assets/loop.ogg" type="AudioStream" id=8]
-[ext_resource path="res://components/Message/Message.tscn" type="PackedScene" id=9]
+[ext_resource path="res://components/Player/sfx/attack.wav" type="AudioStream" id=9]
 
 [sub_resource type="Environment" id=8]
 background_mode = 4
@@ -71,18 +71,6 @@ texture = ExtResource( 6 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="Button" type="Button" parent="."]
-margin_left = -176.0
-margin_top = 144.0
-margin_right = 121.0
-margin_bottom = 224.0
-theme = SubResource( 3 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
-text = "Start game"
-
 [node name="Rrh2" type="Sprite" parent="."]
 visible = false
 position = Vector2( -320, 57 )
@@ -116,10 +104,19 @@ text = "Made in 48h from scratch by Jiri Hysek for  Ludum Dare 50 Compo."
 stream = ExtResource( 8 )
 autoplay = true
 
-[node name="Message" parent="." instance=ExtResource( 9 )]
-margin_left = -192.0
-margin_top = -120.0
-margin_right = 494.0
-margin_bottom = 231.0
+[node name="Button" type="Button" parent="."]
+margin_left = -176.0
+margin_top = 144.0
+margin_right = 121.0
+margin_bottom = 224.0
+theme = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+text = "Start game"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
