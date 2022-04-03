@@ -4,4 +4,5 @@ func _ready():
 	Transition.openScene()
 
 func _on_Button_pressed():
+	Music.play()
 	Transition.switchTo("res://scenes/Game.tscn")

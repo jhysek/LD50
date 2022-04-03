@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://components/Player/cape_left.png" type="Texture" id=1]
 [ext_resource path="res://components/Player/Player.gd" type="Script" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://components/Player/cloak_back.png" type="Texture" id=11]
 [ext_resource path="res://components/Player/knife.png" type="Texture" id=12]
 [ext_resource path="res://components/Player/hand.png" type="Texture" id=13]
+[ext_resource path="res://components/Player/sfx/run.wav" type="AudioStream" id=14]
+[ext_resource path="res://components/Player/sfx/double_jump.wav" type="AudioStream" id=15]
+[ext_resource path="res://components/Player/sfx/jump.wav" type="AudioStream" id=16]
+[ext_resource path="res://components/Player/sfx/attack2.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 43, 250.5 )
@@ -2412,8 +2416,16 @@ anims/WalkRight = SubResource( 4 )
 [node name="Sfx" type="Node" parent="."]
 
 [node name="Run" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 14 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 16 )
+
+[node name="DoubleJump" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 15 )
+
+[node name="Attack" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 17 )
 
 [node name="EyeBlinker" type="Timer" parent="."]
 wait_time = 4.0

@@ -87,7 +87,7 @@ func controlled_process(delta):
 	was_in_air = in_air
 
 	if state != State.DEAD:
-		if state == State.READY and !in_air and Input.is_action_pressed("hide"):
+		if state == State.READY and !in_air and Input.is_action_pressed("ui_down"):
 			for area in $Area.get_overlapping_areas():
 				if area.is_in_group("Hidable"):
 					state = State.HIDDEN
@@ -95,7 +95,7 @@ func controlled_process(delta):
 					motion.y = 0
 					anim.play("Hide")
 					
-		if state == State.HIDDEN and Input.is_action_just_released("hide"):
+		if state == State.HIDDEN and Input.is_action_just_released("ui_down"):
 			anim.stop()
 			anim.play("UnHide")
 		
@@ -106,6 +106,7 @@ func controlled_process(delta):
 		if Input.is_action_just_pressed('attack'):
 			state = State.ATTACKING
 			anim.play("Stab")
+			$Sfx/Attack.play()
 		
 		if state != State.READY:
 			if !in_air:
@@ -116,12 +117,13 @@ func controlled_process(delta):
 			if in_air: 
 				double_jumped = true
 				anim.play("DoubleJump")
+				$Sfx/DoubleJump.play()
 			else:
 				in_air = true
 				anim.play("Jump")
+				$Sfx/Jump.play()
 			jump_timeout = 0
 			
-			$Sfx/Jump.play()
 			motion.y = JUMP_SPEED
 			sfx_run.stop()
 			
@@ -132,6 +134,7 @@ func controlled_process(delta):
 				$Visual.scale.x = 1
 			motion.x = min(motion.x + SPEED * delta, SPEED * delta)
 			if sfx_run and !sfx_run.playing and !in_air:
+				print("SFX RUN")
 				sfx_run.play()
 
 		if Input.is_action_pressed('ui_left'):
@@ -148,8 +151,8 @@ func controlled_process(delta):
 				anim.play("Idle")
 			motion.x = 0
 			
-		if sfx_run and sfx_run.playing:
-			sfx_run.stop()
+			if sfx_run and sfx_run.playing:
+				sfx_run.stop()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/double_jump.wav-86cd851001ddb73596d0f8bac4819eff.sample"
+
+[deps]
+
+source_file="res://components/Player/sfx/double_jump.wav"
+dest_files=[ "res://.import/double_jump.wav-86cd851001ddb73596d0f8bac4819eff.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

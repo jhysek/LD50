@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/AreYouSerious-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://components/Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/tree01.png" type="Texture" id=6]
 [ext_resource path="res://assets/tree02.png" type="Texture" id=7]
+[ext_resource path="res://assets/loop.ogg" type="AudioStream" id=8]
+[ext_resource path="res://components/Message/Message.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=8]
 background_mode = 4
@@ -109,5 +111,15 @@ margin_top = 273.0
 margin_right = 497.0
 margin_bottom = 287.0
 text = "Made in 48h from scratch by Jiri Hysek for  Ludum Dare 50 Compo."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="Message" parent="." instance=ExtResource( 9 )]
+margin_left = -192.0
+margin_top = -120.0
+margin_right = 494.0
+margin_bottom = 231.0
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
