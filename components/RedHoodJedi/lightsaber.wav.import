@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lightsaber.wav-1a27599139d085a82a8953ebf868a87c.sample"
+
+[deps]
+
+source_file="res://components/RedHoodJedi/lightsaber.wav"
+dest_files=[ "res://.import/lightsaber.wav-1a27599139d085a82a8953ebf868a87c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://components/Enemy/body.png" type="Texture" id=1]
 [ext_resource path="res://components/Enemy/Enemy.gd" type="Script" id=2]
@@ -19,6 +19,15 @@
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 92, 109 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 548.25, 150 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 278, 175.25 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Attack"
@@ -910,7 +919,7 @@ tracks/17/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("RayCast2D:scale")
+tracks/18/path = NodePath("Visual/FOV:scale")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -919,10 +928,10 @@ tracks/18/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.623, 0.661 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("RayCast2D:position")
+tracks/19/path = NodePath("Visual/FOV:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -931,10 +940,10 @@ tracks/19/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -275, -235 ) ]
+"values": [ Vector2( -267, -233 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("RayCastClose:position")
+tracks/20/path = NodePath("Visual/FOV:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -943,10 +952,10 @@ tracks/20/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -275, -235 ) ]
+"values": [ -2.2214 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("RayCastClose:scale")
+tracks/21/path = NodePath("Visual/Body:rotation_degrees")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -955,10 +964,10 @@ tracks/21/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ 0.0 ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("RayCast2D:cast_to")
+tracks/22/path = NodePath("Visual/Body/Leg4:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -967,10 +976,10 @@ tracks/22/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1000, 50 ) ]
+"values": [ Vector2( 147, 105 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("FOV:scale")
+tracks/23/path = NodePath("Visual/Body/Leg3:position")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -979,10 +988,10 @@ tracks/23/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.623, 0.661 ) ]
+"values": [ Vector2( 156.396, 100.151 ) ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("FOV:position")
+tracks/24/path = NodePath("Visual/Body/HeadTop/Panel:visible")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -991,87 +1000,15 @@ tracks/24/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -267, -233 ) ]
+"values": [ false ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("FOV:rotation_degrees")
+tracks/25/path = NodePath("AnimationPlayer:playback_speed")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
 tracks/25/enabled = true
 tracks/25/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -2.2214 ]
-}
-tracks/26/type = "value"
-tracks/26/path = NodePath("RayCastClose:rotation_degrees")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/27/type = "value"
-tracks/27/path = NodePath("Visual/Body:rotation_degrees")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/28/type = "value"
-tracks/28/path = NodePath("Visual/Body/Leg4:position")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 147, 105 ) ]
-}
-tracks/29/type = "value"
-tracks/29/path = NodePath("Visual/Body/Leg3:position")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 156.396, 100.151 ) ]
-}
-tracks/30/type = "value"
-tracks/30/path = NodePath("Visual/Body/HeadTop/Panel:visible")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/31/type = "value"
-tracks/31/path = NodePath("AnimationPlayer:playback_speed")
-tracks/31/interp = 1
-tracks/31/loop_wrap = true
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -1299,7 +1236,7 @@ tracks/17/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("RayCast2D:scale")
+tracks/18/path = NodePath("Visual/FOV:scale")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1308,10 +1245,10 @@ tracks/18/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.623, 0.661 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("RayCast2D:position")
+tracks/19/path = NodePath("Visual/FOV:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -1320,10 +1257,10 @@ tracks/19/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -275, -235 ) ]
+"values": [ Vector2( -267, -233 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("RayCastClose:position")
+tracks/20/path = NodePath("Visual/FOV:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -1332,75 +1269,15 @@ tracks/20/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -275, -235 ) ]
+"values": [ -2.2214 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("RayCastClose:scale")
+tracks/21/path = NodePath("AnimationPlayer:playback_speed")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/22/type = "value"
-tracks/22/path = NodePath("RayCast2D:cast_to")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -1000, 50 ) ]
-}
-tracks/23/type = "value"
-tracks/23/path = NodePath("FOV:scale")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.623, 0.661 ) ]
-}
-tracks/24/type = "value"
-tracks/24/path = NodePath("FOV:position")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -267, -233 ) ]
-}
-tracks/25/type = "value"
-tracks/25/path = NodePath("FOV:rotation_degrees")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -2.2214 ]
-}
-tracks/26/type = "value"
-tracks/26/path = NodePath("AnimationPlayer:playback_speed")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -1628,7 +1505,7 @@ tracks/17/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("RayCast2D:scale")
+tracks/18/path = NodePath("Visual/FOV:scale")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1637,10 +1514,10 @@ tracks/18/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1, 1 ) ]
+"values": [ Vector2( -0.623, 0.661 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("RayCast2D:position")
+tracks/19/path = NodePath("Visual/FOV:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -1649,10 +1526,10 @@ tracks/19/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 333, -243 ) ]
+"values": [ Vector2( 339, -247 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("FOV:scale")
+tracks/20/path = NodePath("Visual/FOV:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -1661,75 +1538,15 @@ tracks/20/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -0.623, 0.661 ) ]
+"values": [ 3.22058 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("FOV:position")
+tracks/21/path = NodePath("AnimationPlayer:playback_speed")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 339, -247 ) ]
-}
-tracks/22/type = "value"
-tracks/22/path = NodePath("FOV:rotation_degrees")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 3.22058 ]
-}
-tracks/23/type = "value"
-tracks/23/path = NodePath("RayCastClose:scale")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -1, 1 ) ]
-}
-tracks/24/type = "value"
-tracks/24/path = NodePath("RayCastClose:position")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 359, -214 ) ]
-}
-tracks/25/type = "value"
-tracks/25/path = NodePath("RayCastClose:rotation_degrees")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/26/type = "value"
-tracks/26/path = NodePath("AnimationPlayer:playback_speed")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -1776,6 +1593,16 @@ margin_top = 19.6292
 margin_right = -107.701
 margin_bottom = 59.6292
 custom_styles/panel = SubResource( 7 )
+
+[node name="Teeth" type="Area2D" parent="Visual/Body/HeadTop"]
+position = Vector2( -89, 28 )
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Body/HeadTop/Teeth"]
+position = Vector2( -56, 99 )
+shape = SubResource( 10 )
 
 [node name="Leg1" type="Sprite" parent="Visual/Body"]
 position = Vector2( -123, 17 )
@@ -1828,6 +1655,33 @@ position = Vector2( 158.998, 77.2763 )
 texture = ExtResource( 13 )
 offset = Vector2( 80.451, -91.1932 )
 
+[node name="VisionArea" type="Area2D" parent="Visual"]
+position = Vector2( -260, 140 )
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/VisionArea"]
+position = Vector2( -508.75, -79 )
+shape = SubResource( 8 )
+
+[node name="CloseArea" type="Area2D" parent="Visual/VisionArea"]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/VisionArea/CloseArea"]
+position = Vector2( -246, -47.25 )
+shape = SubResource( 9 )
+
+[node name="FOV" type="Sprite" parent="Visual"]
+modulate = Color( 0.85098, 0.85098, 0.85098, 0.313726 )
+position = Vector2( -267, -233 )
+rotation = -0.0387707
+scale = Vector2( 0.623, 0.661 )
+texture = ExtResource( 12 )
+offset = Vector2( -806.307, -30.2679 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 playback_speed = 2.0
@@ -1837,28 +1691,6 @@ anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/WalkLeft = SubResource( 3 )
 anims/WalkRight = SubResource( 4 )
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -275, -235 )
-enabled = true
-cast_to = Vector2( -1000, 50 )
-collision_mask = 4
-collide_with_areas = true
-
-[node name="RayCastClose" type="RayCast2D" parent="."]
-position = Vector2( -275, -235 )
-enabled = true
-cast_to = Vector2( -500, 0 )
-collision_mask = 4
-collide_with_areas = true
-
-[node name="FOV" type="Sprite" parent="."]
-modulate = Color( 0.85098, 0.85098, 0.85098, 0.313726 )
-position = Vector2( -267, -233 )
-rotation = -0.0387707
-scale = Vector2( 0.623, 0.661 )
-texture = ExtResource( 12 )
-offset = Vector2( -806.307, -30.2679 )
 
 [node name="Sfx" type="Node" parent="."]
 
@@ -1873,3 +1705,9 @@ stream = ExtResource( 15 )
 
 [node name="Death" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource( 14 )
+
+[connection signal="area_entered" from="Visual/Body/HeadTop/Teeth" to="." method="_on_Teeth_area_entered"]
+[connection signal="area_entered" from="Visual/VisionArea" to="." method="_on_VisionArea_area_entered"]
+[connection signal="area_exited" from="Visual/VisionArea" to="." method="_on_VisionArea_area_exited"]
+[connection signal="area_entered" from="Visual/VisionArea/CloseArea" to="." method="_on_CloseArea_area_entered"]
+[connection signal="area_exited" from="Visual/VisionArea/CloseArea" to="." method="_on_CloseArea_area_exited"]

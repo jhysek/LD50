@@ -15,8 +15,17 @@ func _process(delta):
 			$Timer.stop()
 			_on_Timer_timeout()
 
+func tell_lines(texts):
+	var messages = []
+	for text in texts:
+		messages.append({
+			"text": text[0],
+			"timeout": text[1],
+			"delay": text[2]
+		})	
+	tell_all(messages)
+
 func tell_all(text_list, start_delay = 0):
-	print("TElling all")
 	texts = text_list
 	tell_next()
 
@@ -31,7 +40,6 @@ func tell_current():
 	if !current:
 		return
 		
-	print("Telling: ", current.text)
 	if current.delay > 0:
 		delay = true
 		wait_time = current.timeout + 1

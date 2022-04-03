@@ -1,20 +1,20 @@
 extends Node2D
 
+var texts = [
+	["Grandma told me this will inevitably happen.", 5, 1],
+	["Fortunately she gave me this...", 4, 2],
+]
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	Music.playFromPosition(82)
+	$Timer.start()
+	$Message.tell_lines(texts)
 
 func _on_Timer_timeout():
 	$AnimationPlayer.play("Saber")
+
+func saber():
+	$lightsaber.play()
+	
+func switchScene():
+	Transition.switchTo("res://scenes/Finished.tscn")

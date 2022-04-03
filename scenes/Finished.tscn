@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/AreYouSerious-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/white.png" type="Texture" id=3]
+[ext_resource path="res://assets/title.png" type="Texture" id=4]
+[ext_resource path="res://assets/tree01.png" type="Texture" id=6]
+[ext_resource path="res://assets/tree02.png" type="Texture" id=7]
+[ext_resource path="res://assets/loop.ogg" type="AudioStream" id=8]
+[ext_resource path="res://components/Message/Message.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Environment" id=8]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.18
+glow_strength = 1.22
+glow_bloom = 0.19
+glow_hdr_luminance_cap = 54.67
+glow_bicubic_upscale = true
+glow_high_quality = true
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 90
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 8 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+modulate = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+position = Vector2( 35, -8.5 )
+scale = Vector2( 12.62, 7.71 )
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.258824 )
+position = Vector2( -243.422, 27.0783 )
+rotation = 3.14159
+scale = Vector2( 0.220349, -0.193988 )
+texture = ExtResource( 7 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 375, 4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 301, -38 )
+scale = Vector2( 0.347599, 0.259088 )
+texture = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Title" type="Sprite" parent="."]
+position = Vector2( -4, -215 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -399, -19 )
+scale = Vector2( 0.335152, 0.34639 )
+texture = ExtResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="Message" parent="." instance=ExtResource( 9 )]
+margin_left = -192.0
+margin_top = -120.0
+margin_right = 494.0
+margin_bottom = 231.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = -307.0
+margin_top = 7.0
+margin_right = 319.0
+margin_bottom = 308.0
+custom_fonts/font = SubResource( 9 )
+text = "Made for Ludum Dare 50 compo
+by Jiri Hysek
+
+I hope you had fun!"
+align = 1
+
+[node name="End" type="Label" parent="."]
+margin_left = -309.0
+margin_top = -146.0
+margin_right = 317.0
+margin_bottom = 155.0
+custom_fonts/font = SubResource( 10 )
+text = "The End"
+align = 1

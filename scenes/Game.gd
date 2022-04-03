@@ -19,18 +19,8 @@ var texts3 = [
 	["And in the worst case, I can defend myself...", 3, 0],
 ]
 
-func tell_texts(texts):
-	var messages = []
-	for text in texts:
-		messages.append({
-			"text": text[0],
-			"timeout": text[1],
-			"delay": text[2]
-		})
-		
-	$Player/Message.tell_all(messages)
-
 func _ready():
 	Transition.openSceneLong()
-	tell_texts(texts0)
+	$Player/Message.tell_lines(texts0)
+
 	

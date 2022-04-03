@@ -134,7 +134,6 @@ func controlled_process(delta):
 				$Visual.scale.x = 1
 			motion.x = min(motion.x + SPEED * delta, SPEED * delta)
 			if sfx_run and !sfx_run.playing and !in_air:
-				print("SFX RUN")
 				sfx_run.play()
 
 		if Input.is_action_pressed('ui_left'):
@@ -169,6 +168,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_EyeBlinker_timeout():
+	if state == State.DEAD:
+		return
+		
 	if !blink:
 		if !hidden:
 			$Visual/Body/Head/ClosedEyes.show()
@@ -191,3 +193,9 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("Killable"):
 		body.stab()
 	
+
+func die():
+	Music.stop()
+	$Sfx/Death.play()
+	anim.play("Death")
+	state = State.DEAD

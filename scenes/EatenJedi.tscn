@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/light.png" type="Texture" id=1]
 [ext_resource path="res://assets/white.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://scenes/EatenJedi.gd" type="Script" id=5]
 [ext_resource path="res://assets/vinette.png" type="Texture" id=6]
 [ext_resource path="res://components/Player/arm.png" type="Texture" id=7]
+[ext_resource path="res://components/Player/left_eye_closed.png" type="Texture" id=8]
+[ext_resource path="res://components/Message/Message.tscn" type="PackedScene" id=9]
+[ext_resource path="res://components/RedHoodJedi/lightsaber.wav" type="AudioStream" id=10]
 
 [sub_resource type="Environment" id=4]
 glow_enabled = true
@@ -50,10 +53,70 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("RedHoodJedi/Eye:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RedHoodJedi/Eye:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.140351 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RedHoodJedi/Eye:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.894118, 0.623529, 0.623529, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Saber"
-length = 1.5
+length = 9.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("RedHoodJedi:self_modulate")
 tracks/0/interp = 1
@@ -90,6 +153,71 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("RedHoodJedi/Eye:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.9, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RedHoodJedi/Eye:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.9, 3.1, 3.5, 3.6 ),
+"transitions": PoolRealArray( 1, 0.25, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.140351 ), Vector2( 1, 0.140351 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.140351 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RedHoodJedi/Eye:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.9, 3.1, 3.5, 3.6 ),
+"transitions": PoolRealArray( 1, 0.535887, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.894118, 0.623529, 0.623529, 0 ), Color( 0.894118, 0.623529, 0.623529, 0 ), Color( 0.894118, 0.623529, 0.623529, 1 ), Color( 0.894118, 0.623529, 0.623529, 1 ), Color( 0.894118, 0.623529, 0.623529, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 6, 8.9 ),
+"transitions": PoolRealArray( 1, 0.466516, 1 ),
+"update": 0,
+"values": [ Color( 0.85, 0.85, 0.85, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "saber"
+}, {
+"args": [  ],
+"method": "switchScene"
+} ]
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -100,8 +228,16 @@ scale = Vector2( 26.8, 15.04 )
 texture = ExtResource( 2 )
 
 [node name="RedHoodJedi" type="Sprite" parent="."]
-self_modulate = Color( 1, 0.772549, 0.772549, 1 )
+self_modulate = Color( 1, 0.772549, 0.772549, 0 )
 texture = ExtResource( 3 )
+
+[node name="Eye" type="Sprite" parent="RedHoodJedi"]
+visible = false
+modulate = Color( 0.894118, 0.623529, 0.623529, 1 )
+position = Vector2( 10, -113 )
+scale = Vector2( 1, 0.140351 )
+texture = ExtResource( 8 )
+offset = Vector2( 1, 29 )
 
 [node name="Camera2D" type="Camera2D" parent="RedHoodJedi"]
 current = true
@@ -135,12 +271,21 @@ texture = ExtResource( 7 )
 environment = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Saber"
 anims/RESET = SubResource( 2 )
 anims/Saber = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
+
+[node name="Message" parent="." instance=ExtResource( 9 )]
+margin_left = -741.0
+margin_top = -418.0
+margin_right = 753.0
+margin_bottom = 128.0
+align = 1
+
+[node name="lightsaber" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
