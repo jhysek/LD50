@@ -521,30 +521,6 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/15/type = "value"
-tracks/15/path = NodePath(".:collision_layer")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1, 2 ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath(".:collision_mask")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1, 2 ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -1836,30 +1812,6 @@ tracks/13/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/14/type = "value"
-tracks/14/path = NodePath(".:collision_layer")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath(".:collision_mask")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "WalkLeft"
@@ -2416,6 +2368,8 @@ texture = ExtResource( 12 )
 offset = Vector2( 44, -19 )
 
 [node name="Area2D" type="Area2D" parent="Visual/Body/Arm/Knife"]
+collision_layer = 8
+collision_mask = 8
 monitoring = false
 monitorable = false
 
