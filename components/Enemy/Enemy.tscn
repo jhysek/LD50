@@ -17,10 +17,10 @@
 [ext_resource path="res://components/Enemy/sfx/attack.wav" type="AudioStream" id=15]
 [ext_resource path="res://components/Enemy/sfx/vrr.wav" type="AudioStream" id=16]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=47]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=48]
 extents = Vector2( 92, 109 )
 
 [sub_resource type="RectangleShape2D" id=8]
@@ -1592,7 +1592,7 @@ margin_left = -147.701
 margin_top = 19.6292
 margin_right = -107.701
 margin_bottom = 59.6292
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 47 )
 
 [node name="Teeth" type="Area2D" parent="Visual/Body/HeadTop"]
 position = Vector2( -89, 28 )
@@ -1602,7 +1602,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Body/HeadTop/Teeth"]
 position = Vector2( -56, 99 )
-shape = SubResource( 10 )
+shape = SubResource( 48 )
 
 [node name="Leg1" type="Sprite" parent="Visual/Body"]
 position = Vector2( -123, 17 )

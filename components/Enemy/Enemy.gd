@@ -11,13 +11,15 @@ enum State {
 
 enum MovementType {
 	STATIC,
-	WALKING
+	WALKING,
+	ANIMATED
 }
 
 export var GRAVITY = 70 * 70
 export var SPEED = 30000
 export var frozen = false
 export var movementType = MovementType.STATIC
+export var invincible = false
 
 export var direction = 1
 var motion = Vector2(0,0)
@@ -65,12 +67,15 @@ func attack():
 		
 		
 func die():
-	anim.play("Die")
-	$Sfx/Death.play()
-	state = State.DEAD
-	$Visual/Body/HeadTop/Teeth.monitoring = false
-	$Visual/VisionArea.monitoring = false
-	$Visual/VisionArea/CloseArea.monitoring = false
+	if invincible:
+		$Sfx/Noticed2.play()
+	else:
+		anim.play("Die")
+		$Sfx/Death.play()
+		state = State.DEAD
+		$Visual/Body/HeadTop/Teeth.monitoring = false
+		$Visual/VisionArea.monitoring = false
+		$Visual/VisionArea/CloseArea.monitoring = false
 	
 func behavior(delta):
 	if movementType == MovementType.STATIC:
@@ -83,8 +88,10 @@ func behavior(delta):
 func _physics_process(delta):
 	if frozen or (game and game.paused):
 		return
+	
+	if movementType == MovementType.ANIMATED:
+		return
 		
-
 	motion.y += GRAVITY * delta
 
 	if state != State.DEAD:
@@ -105,6 +112,9 @@ func stab():
 
 
 func _on_VisionArea_area_entered(area):
+	if movementType == MovementType.ANIMATED:
+		return
+		
 	if area.is_in_group("Player") and !player.is_dead():
 		if !player.is_hidden():
 			$Sfx/Noticed1.play()
@@ -117,6 +127,9 @@ func _on_VisionArea_area_exited(area):
 		state = State.IDLE
 
 func _on_CloseArea_area_entered(area):
+	if movementType == MovementType.ANIMATED:
+		return
+		
 	if area.is_in_group("Player") and !player.is_dead():
 		if !player.is_hidden() and state != State.ATTACKING:
 			attack()

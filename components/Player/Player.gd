@@ -194,6 +194,13 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("Killable"):
 		body.stab()
 	
+func revive():
+	state = State.READY
+	anim.play("Idle")
+	
+func stop():
+	$Sfx/Run.stop()
+	$AnimationPlayer.play("Idle")
 
 func die():
 	Music.stop()
