@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://components/Player/Player.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://components/Enemy/Enemy.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/door.png" type="Texture" id=16]
 [ext_resource path="res://assets/light.png" type="Texture" id=17]
+[ext_resource path="res://components/Checkpoint/Checkpoint.tscn" type="PackedScene" id=18]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( 0, 0, 0, 64, 64, 64 )
@@ -377,4 +378,13 @@ texture = ExtResource( 16 )
 texture = ExtResource( 17 )
 texture_scale = 2.0
 
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 18 )]
+position = Vector2( 23589, -160 )
+
+[node name="ReviveTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Exit" to="." method="_on_Exit_area_entered"]
+[connection signal="timeout" from="ReviveTimer" to="." method="_on_ReviveTimer_timeout"]

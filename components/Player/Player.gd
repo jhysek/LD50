@@ -94,6 +94,7 @@ func controlled_process(delta):
 					motion.x = 0
 					motion.y = 0
 					anim.play("Hide")
+					$Sfx/Run.stop()
 					
 		if state == State.HIDDEN and Input.is_action_just_released("ui_down"):
 			anim.stop()

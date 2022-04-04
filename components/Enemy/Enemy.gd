@@ -26,8 +26,6 @@ var motion = Vector2(0,0)
 var state = State.IDLE
 
 onready var game = get_node("/root/Game")
-onready var ray = $RayCast2D
-onready var rayClose = $RayCastClose
 onready var anim = $AnimationPlayer
 onready var player = game.get_node("Player")
 

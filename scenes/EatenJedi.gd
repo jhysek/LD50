@@ -1,7 +1,7 @@
 extends Node2D
 
 var texts = [
-	["Grandma told me this will happen.", 5, 1],
+	["Grandma told me this will happen...  eaten alive.", 5, 1],
 	["Fortunately, she gave me this...", 5, 2],
 ]
 

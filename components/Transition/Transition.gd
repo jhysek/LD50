@@ -21,6 +21,14 @@ func switchLongerTo(target_scene):
 	scena = target_scene
 	$Transition/AnimationPlayer.play("LongFade")
 
+func fadeOut():
+	scena = ""
+	$Transition/AnimationPlayer.play("Fade")
+	
+func fadeIn():
+	scena = ""
+	$Transition/AnimationPlayer.play_backwards("Fade")
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if !scena.empty():
 		get_tree().change_scene(scena)

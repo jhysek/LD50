@@ -12,24 +12,20 @@ var texts0 = [
 onready var player = $Player
 
 func _ready():
-	if Settings.last_checkpoint:
-		player.paused = false
-		paused = false
-		player.position = Settings.last_checkpoint.position
-	else:
-		if LevelSwitcher.current_level == 0:
-			$Player/Message.tell_lines(texts0)
+	Settings.last_checkpoint = null
+	if LevelSwitcher.current_level == 0:
+		$Player/Message.tell_lines(texts0)
 			
 	Transition.openSceneLong()
 
 func restart():
-	Music.fadePlay()
 	if Settings.last_checkpoint:
-		player.revive()
-		player.position = Settings.last_checkpoint.position
+		Transition.fadeOut()
+		$ReviveTimer.start()
 	else:
 		Transition.switchLongerTo(LevelSwitcher.get_current_level())
-
+		Music.play()
+		
 func checkpoint_reached(checkpoint):
 	if !Settings.last_checkpoint or checkpoint.number > Settings.last_checkpoint.number:
 		Settings.last_checkpoint = {
@@ -55,3 +51,12 @@ func _on_End_area_entered(area):
 		$Boss/AnimationPlayer.play("Attack")
 		$Boss/AnimationPlayer2.play("Jump")
 		LevelSwitcher.next_level()
+
+
+func _on_ReviveTimer_timeout():
+	player.position = Settings.last_checkpoint.position
+	player.revive()
+	Transition.fadeIn()
+	Music.play()
+
+	
